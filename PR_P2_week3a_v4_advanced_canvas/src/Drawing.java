@@ -27,7 +27,7 @@ public class Drawing extends Canvas {
 		// String
 		Random rand = new Random();
 		int r = rand.nextInt((99999 - 10000) + 1) + 10000;
-		
+
 		g.setColor(getRandomColor());
 		g.drawString(Integer.toString(r), 10, 20);
 	}
@@ -37,14 +37,14 @@ public class Drawing extends Canvas {
 		ThreadLocalRandom tlr = ThreadLocalRandom.current();
 
 		// Random x, y, width, height
-		int diameter = tlr.nextInt(40, 70 + 1);
-		int width = tlr.nextInt(20, 100 + 1);
-		int height = tlr.nextInt(20, 100 + 1);
+		int diameter = tlr.nextInt(40, 70);
+		int width = tlr.nextInt(20, 100);
+		int height = tlr.nextInt(20, 100);
 		int x = rand.nextInt(getWidth() - diameter);
 		int y = rand.nextInt(getHeight() - diameter);
 
 		Color rc = getRandomColor();
-		
+
 		if (type.equals(ShapeType.CIRCLE)) {
 			return new ShapePreferences(x, y, diameter, rc);
 		} else if (type.equals(ShapeType.RECTANGLE)) {
@@ -55,7 +55,7 @@ public class Drawing extends Canvas {
 
 		return null;
 	}
-
+	
 	public Color getRandomColor() {
 		Random rand = new Random();
 		float r = rand.nextFloat();
