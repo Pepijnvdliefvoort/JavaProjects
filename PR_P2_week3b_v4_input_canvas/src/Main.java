@@ -30,12 +30,11 @@ public class Main {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-//				System.out.println("Key pressed code=" + e.getKeyCode());
-				if(e.getKeyCode() == 32) {
+				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 					canvas.initShapes();
 					canvas.repaint();
 				}
-				if(e.getKeyCode() == 17) {
+				if(e.getKeyCode() == KeyEvent.VK_CONTROL) {
 					canvas.moveShapes();
 				}
 			}
