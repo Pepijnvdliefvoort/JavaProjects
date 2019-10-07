@@ -15,7 +15,7 @@ public class Main {
 		cd.addCust(cust3);
 		cd.addCust(cust4);
 		
-//		cd.printQueue();
+		cd.printQueue();
 		
 		
 	}

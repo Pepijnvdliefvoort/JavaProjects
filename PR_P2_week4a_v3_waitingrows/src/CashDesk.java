@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 
 public class CashDesk {
-	//Variables
+	// Variables
 	public ArrayList<Customer> queue;
 	private int spendTimeHelping;
 	private boolean opened;
 
-	//Constructor
+	// Constructor
 	public CashDesk() {
+		setOpened(false);
 		queue = new ArrayList<>();
 	}
-	
-	
-	//Methods
+
+	// Methods
 	void addCust(Customer newCust) {
 		if (newCust != null) {
 			queue.add(newCust);
@@ -20,7 +20,11 @@ public class CashDesk {
 	}
 
 	void helpCust() {
-		queue.remove(0);
+		if (getSpendTimeHelping() == queue.get(0).getHelpTime()) {
+			queue.remove(0);
+			setSpendTimeHelping(0);
+		}
+		setSpendTimeHelping(getSpendTimeHelping() + 1);
 	}
 
 	int getQueueSize() {
@@ -32,15 +36,13 @@ public class CashDesk {
 		return lastCust;
 	}
 
-	
 	public void printQueue() {
-		for(Customer item : queue) {
+		for (Customer item : queue) {
 			System.out.println(item.getHelpTime());
 		}
 	}
-	
-	
-	//Get & setters
+
+	// Get & setters
 	public int getSpendTimeHelping() {
 		return spendTimeHelping;
 	}
