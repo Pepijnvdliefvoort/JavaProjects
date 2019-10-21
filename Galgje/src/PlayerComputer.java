@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PlayerComputer extends Player {
 	// Variables
-	private static final int DELAY = 100;
+	private static final int DELAY = 2000;
 
 	// Constructor
 	public PlayerComputer() {
