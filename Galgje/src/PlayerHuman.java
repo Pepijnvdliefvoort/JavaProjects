@@ -59,7 +59,7 @@ public class PlayerHuman extends Player {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.print(game.getGuesser().getName() + " raad een " + c + ". Op welke plaats(en) staat die letter? ");
-		String positions = scanner.nextLine();
+		String positions = scanner.nextLine().trim();
 
 		// Check if nothing has been entered
 		if (positions.equals("")) {
@@ -95,7 +95,7 @@ public class PlayerHuman extends Player {
 						process(game, c);
 						return;
 					}
-					
+
 					// Check if position in word is equal to given position
 					if (i == (intPositions.get(j) - 1)) {
 
@@ -106,20 +106,18 @@ public class PlayerHuman extends Player {
 							process(game, c);
 							return;
 						}
+
 						// if positions are available, set current character in word array
-						if (word[i] == 0) {
-							word[i] = c;
-						}
+						word[i] = c;
 					}
 				}
 			}
-			game.setWord(word);
 		}
 	}
 
 	public void printWord(Game game) {
 		for (int i = 0; i < game.getWord().length; i++) {
-			
+
 			if (game.getWord()[i] == 0) {
 				System.out.print(".");
 			} else {

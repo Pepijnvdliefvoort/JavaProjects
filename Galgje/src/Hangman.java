@@ -13,9 +13,8 @@ public class Hangman {
 			initMatch();
 			match = new Match(players);
 
-			//Play the match
+			// Play the match
 			match.play();
-			
 
 			// Determine whether to keep playing or not
 			playing = match.again();
@@ -25,31 +24,32 @@ public class Hangman {
 	}
 
 	/**
-	 * Initialize match 
+	 * Initialize match
 	 */
 	@SuppressWarnings("resource")
 	public void initMatch() {
 		// Get player names / computer
 		Scanner scanner = new Scanner(System.in);
 		players = new ArrayList<>();
-		System.out.print("Geef de naam van speler 1 (of een C voor computer): ");
-		String player1 = scanner.nextLine();
 
-		System.out.print("Geef de naam van speler 2 (of een C voor computer): ");
-		String player2 = scanner.nextLine();
+		for (int j = 0; j < 2; j++) {
+			while (true) {
+				System.out.print("Geef de naam van speler " + (j + 1) + " (of een C voor computer): ");
+				String player = scanner.nextLine().trim();
 
-		// Player 1
-		if (player1.equalsIgnoreCase("C")) {
-			players.add(new PlayerComputer());
-		} else {
-			players.add(new PlayerHuman(player1));
-		}
+				if (player.isEmpty()) {
+					continue;
+				}
 
-		// Player 2
-		if (player2.equalsIgnoreCase("C")) {
-			players.add(new PlayerComputer());
-		} else {
-			players.add(new PlayerHuman(player2));
+				if(player.equalsIgnoreCase("C")) {
+					players.add(new PlayerComputer());
+					break;
+				}
+				else {
+					players.add(new PlayerHuman(player));
+					break;
+				}
+			}
 		}
 	}
 }
