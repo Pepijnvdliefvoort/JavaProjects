@@ -34,12 +34,15 @@ public class PlayerComputer extends Player {
 		// Computer only picks random letters which have not previously been guessed
 		game.getGuesses().add(c);
 
-		// Add delay to prevent game from being ended nearly instantly
-		try {
-			TimeUnit.MILLISECONDS.sleep(DELAY);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		// Add delay to prevent game from being ended nearly instantly if the opponent is a computer
+		if(game.getThinker() instanceof PlayerComputer) {
+			try {
+				TimeUnit.MILLISECONDS.sleep(DELAY);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
+		
 		return c;
 	}
 

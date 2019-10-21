@@ -1,4 +1,4 @@
-	import java.io.File;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,10 +8,10 @@ public class Game {
 	// Variables
 	private final int MAX_MISTAKES = 10;
 	private ArrayList<Character> guesses, wrong_guesses, alphabet;
-	private String randomWord;	
+	private String randomWord;
 	private char[] word;
 	private int mistakes;
-	
+
 	private Player guesser;
 	private Player thinker;
 
@@ -53,7 +53,7 @@ public class Game {
 			thinker.printWord(this);
 			printMistakes();
 			printHangman(getMistakes());
-			
+
 			thinker.process(this, guesser.guess(this));
 		}
 	}
@@ -62,16 +62,18 @@ public class Game {
 	 * Print amount of mistakes made and wrongly guessed letters
 	 */
 	public void printMistakes() {
+		String mistakesResult = "Aantal fouten: " + getMistakes();
+		
+		//Only print the letters when they have been guessed
 		if (getMistakes() > 0) {
-			String mistakesResult = "Aantal fouten: " + getMistakes();
+
 			mistakesResult += " (";
 			for (int i = 0; i < wrong_guesses.size(); i++) {
 				mistakesResult += wrong_guesses.get(i);
 			}
 			mistakesResult += ")";
-
-			System.out.println(mistakesResult);
 		}
+		System.out.println(mistakesResult);
 	}
 
 	/**
